@@ -50,7 +50,7 @@
                     </li>
                 </ul>
 
-                <ul class="d-none d-xxl-flex navbar-nav mb-0 mx-2">
+                <ul class="d-xxl-flex navbar-nav mb-0 mx-2">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-capitalize" href="#" aria-expanded="false" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hola {{request.user}} </a>
                         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
@@ -61,7 +61,7 @@
                         </ul>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="{% url 'showcart' %}"><span class="badge bg-danger"> {% if totalitem > 0 %} {{ totalitem }} {%endif%}  </span><span>  </span><i class="fas fa-shopping-cart"></i></a>  
+                        <a class="nav-link" href="{% url 'showcart' %}"> {% if totalitem > 0 %}<span class="badge bg-danger"> {{ totalitem }} </span>{%endif%}  <span>  </span><i class="fas fa-shopping-cart"></i></a>  
                     </li>
                     <li>
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>   
