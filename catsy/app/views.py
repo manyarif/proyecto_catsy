@@ -13,7 +13,7 @@ def home(request):
     totalitem = 0
     if request.user.is_authenticated:
         totalitem = len(Cart.objects.filter(user=request.user))
-    return render(request, "app/home.html")
+    return render(request, "app/home.html", locals())
 
 def about(request):
     totalitem = 0
@@ -29,24 +29,36 @@ def contact(request):
 
 class CategoryView(View):
     def get(self, request, val):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.filter(category=val)
         title = Product.objects.filter(category=val).values('title')
         return render(request, "app/category.html", locals())
 
 class CategoryTitle(View):
     def get(self, request, val):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.filter(title=val)
         title = Product.objects.filter(category=product[0].category).values('title')
         return render(request, "app/category.html", locals())
 
 class ProductDetail(View):
     def get(self, request, pk):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         product = Product.objects.get(pk=pk)
         return render(request, "app/productdetail.html", locals())
     
 
 class CustomerRegistrationView(View):
     def get(self, request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         form = CustomerRegistrationForm()
         return render(request, "app/customerregistration.html", locals())
     def post(self, request):
@@ -61,6 +73,9 @@ class CustomerRegistrationView(View):
 
 class ProfileVIew(View):
     def get(self, request):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         form = CustomerProfileForm()
         return render(request, "app/profile.html", locals())
     
@@ -81,11 +96,17 @@ class ProfileVIew(View):
         return render(request, "app/profile.html", locals())
 
 def address(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     add = Customer.objects.filter(user=request.user)
     return render(request, "app/address.html", locals())
 
 class updateAddress(View):
     def get(self, request, pk):
+        totalitem = 0
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         add = Customer.objects.get(pk=pk)
         form = CustomerProfileForm(instance=add)
 
@@ -107,6 +128,9 @@ class updateAddress(View):
         return redirect("address")
 
 def add_to_cart(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     user=request.user
     product_id = request.GET.get('prod_id')
     product = Product.objects.get(id=product_id)
@@ -114,6 +138,9 @@ def add_to_cart(request):
     return redirect('/cart')
 
 def show_cart(request):
+    totalitem = 0
+    if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
     user = request.user
     cart = Cart.objects.filter(user=user)
     amount = 0
@@ -163,6 +190,8 @@ def minus_cart(request):
         c = Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
         c.quantity-=1
         c.save()
+        if c.quantity==0:
+            c.delete()
         user = request.user
         cart = Cart.objects.filter(user=user)
         amount = 0

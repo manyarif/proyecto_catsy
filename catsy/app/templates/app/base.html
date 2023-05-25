@@ -61,7 +61,7 @@
                         </ul>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="{% url 'showcart' %}"><span class="badge bg-danger"> {% if totalitem > 0 %} {{ totalitem }} {%endif%}  </span><span>  </span><i class="fas fa-shopping-cart"></i></a>  
+                        <a class="nav-link" href="{% url 'showcart' %}"> {% if totalitem > 0 %}<span class="badge bg-danger"> {{ totalitem }} </span>{%endif%}  <span>  </span><i class="fas fa-shopping-cart"></i></a>  
                     </li>
                     <li>
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>   
