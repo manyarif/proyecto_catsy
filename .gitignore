@@ -1,0 +1,4 @@
+env
+**/*.pyc
+**/*migrations
+catsy/db.sqlite3
