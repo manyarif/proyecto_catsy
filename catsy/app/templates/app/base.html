@@ -60,9 +60,12 @@
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="{% url 'showcart' %}"> {% if totalitem > 0 %}<span class="badge bg-danger"> {{ totalitem }} </span>{%endif%}  <span>  </span><i class="fas fa-shopping-cart"></i></a>  
+                    </li>
                     <li>
                         <a href="tel:+56976206891"><i class="fas fa-phone" style="width: 1.5rem; height: 1.5rem; margin-top: 0.5rem;"></i></a> 
-                    </li>                    
+                    </li>                      
                     {% else %}
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>  
