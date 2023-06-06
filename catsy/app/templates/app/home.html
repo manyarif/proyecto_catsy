@@ -53,8 +53,13 @@
 <header class="hero bg-primary text-white text-center">
     <div class="container">
         <br></br>
-        <p style="font-size: 40px"><i> Tu aliado felino</i></p>
-        <small class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id labore aperiam delectus accusantium repudiandae molestiae quod quia neque, provident sit? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis, eligendi Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus perferendis, voluptas mollitia culpa, nesciunt corporis eum consequatur facilis dignissimos in distinctio odio harum corrupti iste. Voluptas adipisci eum quisquam at.
+        <p style="font-size: 40px">
+            <i class="fas fa-paw mx-3" style="color: white;"></i>
+            <i>¡Tu aliado felino!</i>
+            <i class="fas fa-paw mx-3" style="color: white;"></i>
+        </p>
+        <small class="fs-5">
+            ¡Bienvenido a nuestra tienda especializada en artículos para gatos en Perú! Aquí encontrarás todo lo que necesitas para consentir a tu felino consentido. Nuestra amplia selección de arenas, alimentos, juguetes y accesorios de marcas reconocidas garantiza calidad y variedad para satisfacer las necesidades de tu peludo amigo.
         </small>
         <br></br>
         <br></br>
@@ -62,63 +67,116 @@
 </header>
 
 <main>
-    <section class="bg-light py-5">
+    <section class="bg-light py-5" style="background-image: url('../../static/app/images/otros/banner.jpg'); background-size: cover; background-position: center;">
         <div class="container text-center">
-            <h2 class="my-5">La manera más simple de hacer feliz a tu mascota</h2>
-            <p>Inscríbase en nuestra aplicación para asegurar un suministro puntual de arena para gatos.</p>
-            <a href="#" class="btn btn-primary btn-lg">Regístrate ahora</a>
+            <h2 class="my-5 text-white">
+                <span class="text-bg">La manera más simple de hacer feliz a tu mascota</span>
+            </h2>
+            <a href="#" class="btn btn-primary btn-lg"><i class="fas fa-paw" style="color: white;"></i>  Regístrate</a>
         </div>
     </section>
 </main>
+
+<style>
+    .text-bg {
+        position: relative;
+        display: inline-block;
+        padding: 0 10px;
+        background-color: rgba(0, 123, 255, 0.5);
+        transform: translateY(3rem);
+        margin-bottom: 1rem;
+    }
+</style>
+
+
 {% endblock content %}
 
 
 {% block information %}
 
-<br> </br> 
+
 <div class="container text-center">
-    <br> </br> 
-    <div class="row text-center bg-blue text-dark p-5 border-bottom shadow text-center">
-        <h2 class="text-center">¡Conoce nuestros productos!</h2>
+    <div class="row text-center bg-muted text-dark p-5 border-bottom shadow text-center">
+        <h1 class="text-center text-primary">¡Conoce nuestros productos!</h1>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'AR' %}"> 
-            <img src="{% static "app/images/product/product1.png" %}" class="img-fluid" alt="Product 1">
-            <button type="button" class="btn btn-primary mt-3">
-                <i class="fas fa-paw" style="color: white;"></i> Arenas
-            </button>
+                <div class="image-frame">
+                    <img src="{% static "app/images/product/product1.png" %}" class="img-fluid" alt="Product 1">
+                </div>
+                <button type="button" class="btn btn-primary mt-3 btn-lg btn-block product-button">
+                    <i class="fas fa-paw" style="color: white; font-size: 40px;"></i><h5>Arenas</h5>
+                </button>
             </a>    
         </div>
 
-
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'CO' %}"> 
-            <img src="{% static "app/images/product/product2.png" %}" class="img-fluid" alt="Product 2">
-            <button type="button" class="btn btn-primary mt-3">
-                <i class="fas fa-paw" style="color: white;"></i> Alimentos
-            </button>            
+                <div class="image-frame">
+                    <img src="{% static "app/images/product/product2.png" %}" class="img-fluid" alt="Product 2">
+                </div>
+                <button type="button" class="btn btn-primary mt-3 btn-lg btn-block product-button">
+                    <i class="fas fa-paw" style="color: white; font-size: 40px;"></i><h5>Alimentos</h5>
+                </button>            
             </a>
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'JU' %}"> 
-            <img src="{% static "app/images/product/product3.png" %}" class="img-fluid" alt="Product 3">
-            <button type="button" class="btn btn-primary mt-3">
-                <i class="fas fa-paw" style="color: white;"></i> Juguetes
-            </button>
+                <div class="image-frame">
+                    <img src="{% static "app/images/product/product3.png" %}" class="img-fluid" alt="Product 3">
+                </div>
+                <button type="button" class="btn btn-primary mt-3 btn-lg btn-block product-button">
+                    <i class="fas fa-paw" style="color: white; font-size: 40px;"></i><h5>Juguetes</h5>
+                </button>
             </a>    
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'AC' %}"> 
-            <img src="{% static "app/images/product/product4.png" %}" class="img-fluid" alt="Product 4">
-            <button type="button" class="btn btn-primary mt-3">
-                <i class="fas fa-paw" style="color: white;"></i> Accesorios
-            </button>
+                <div class="image-frame">
+                    <img src="{% static "app/images/product/product4.png" %}" class="img-fluid" alt="Product 4">
+                </div>
+                <button type="button" class="btn btn-primary mt-3 btn-lg btn-block product-button">
+                    <i class="fas fa-paw" style="color: white; font-size: 40px;"></i><h5>Accesorios</h5>
+                </button>
             </a>
-            </div>
+        </div>
     </div>
-</div>  
-<br> </br> 
+</div>
+
+<style>
+    .image-frame {
+        position: relative;
+        display: inline-block;
+        padding: 4px;
+    }
+
+    .image-frame::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 4px solid rgb(0, 123, 255);
+        box-shadow: 0 0 0px rgb(0, 123, 255);
+        z-index: -1;
+    }
+
+    .image-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .product-button {
+        width: 60%;
+    }
+</style>
+
+
+
+
 
 {% endblock information %}
