@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">Sobre Nosotros</a>
+                        <a class="nav-link" href="{% url 'about' %}">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
@@ -60,12 +60,9 @@
                             <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="{% url 'showcart' %}"> {% if totalitem > 0 %}<span class="badge bg-danger"> {{ totalitem }} </span>{%endif%}  <span>  </span><i class="fas fa-shopping-cart"></i></a>  
-                    </li>
                     <li>
-                        <a class="nav-link" href="#"><i class="fas fa-heart"></i></a>   
-                    </li>
+                        <a href="tel:+56976206891"><i class="fas fa-phone" style="width: 1.5rem; height: 1.5rem; margin-top: 0.5rem;"></i></a> 
+                    </li>                    
                     {% else %}
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>  
@@ -91,9 +88,15 @@
     {% block banner_slider %}{% endblock banner_slider %}
     {% block content %}{% endblock content %}
     {% block information %}{% endblock information %}
-<footer class="text-center text-white bg-primary p-3">
-    <p>&copy; 2023 Catsy | Todos los derechos reservados</p>
-</footer>
+    <footer class="text-center text-white bg-primary p-3">
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram mx-2" style="color: #ffffff; width: 1.5rem; height: 1.5rem;"></i></a>
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f mx-2" style="color: #ffffff; width: 1.5rem; height: 1.5rem;"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter mx-2" style="color: #ffffff; width: 1.5rem; height: 1.5rem;"></i></a>
+        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in mx-2" style="color: #ffffff; width: 1.5rem; height: 1.5rem;"></i></a>
+        <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube mx-2" style="color: #ffffff; width: 1.5rem; height: 1.5rem;"></i></a>
+        <p class="my-2">&copy; 2023 Catsy | Todos los derechos reservados</p>
+    </footer>
+    
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
