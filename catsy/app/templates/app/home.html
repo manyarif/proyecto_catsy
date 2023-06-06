@@ -79,12 +79,14 @@
 <div class="container text-center">
     <br> </br> 
     <div class="row text-center bg-blue text-dark p-5 border-bottom shadow text-center">
-        <h2 class="text-center">Productos</h2>
+        <h2 class="text-center">¡Conoce nuestros productos!</h2>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'AR' %}"> 
             <img src="{% static "app/images/product/product1.png" %}" class="img-fluid" alt="Product 1">
-            <p class="mt-3">Arena</p>
+            <button type="button" class="btn btn-primary mt-3">
+                <i class="fas fa-paw" style="color: white;"></i> Arenas
+            </button>
             </a>    
         </div>
 
@@ -92,21 +94,27 @@
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'CO' %}"> 
             <img src="{% static "app/images/product/product2.png" %}" class="img-fluid" alt="Product 2">
-            <p class="mt-3">Comida</p>
+            <button type="button" class="btn btn-primary mt-3">
+                <i class="fas fa-paw" style="color: white;"></i> Alimentos
+            </button>            
             </a>
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'JU' %}"> 
             <img src="{% static "app/images/product/product3.png" %}" class="img-fluid" alt="Product 3">
-            <p class="mt-3">Juguetes</p>
+            <button type="button" class="btn btn-primary mt-3">
+                <i class="fas fa-paw" style="color: white;"></i> Juguetes
+            </button>
             </a>    
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-12 mt-5">
             <a href="{% url 'category' 'AC' %}"> 
             <img src="{% static "app/images/product/product4.png" %}" class="img-fluid" alt="Product 4">
-            <p class="mt-3">Accesorios</p>
+            <button type="button" class="btn btn-primary mt-3">
+                <i class="fas fa-paw" style="color: white;"></i> Accesorios
+            </button>
             </a>
             </div>
     </div>
