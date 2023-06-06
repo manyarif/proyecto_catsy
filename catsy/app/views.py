@@ -6,6 +6,9 @@ from . models import Product, Customer, Cart
 from . forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
 from django.db.models import Q
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 # Create your views here.
@@ -230,3 +233,19 @@ def search(request):
     product = Product.objects.filter(Q(title__icontains=query))
     return render(request, "app/search.html", locals())
 
+def enviar_mensaje(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        send_mail(
+            subject,
+            f'Nombre: {name}\nCorreo electrónico: {email}\nAsunto: {subject}\nMensaje: {message}',
+            settings.EMAIL_HOST_USER,
+            [settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+
+    return render(request, 'app/contact.html')

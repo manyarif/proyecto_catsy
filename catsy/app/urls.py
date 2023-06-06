@@ -43,5 +43,8 @@ urlpatterns = [
     path("password-reset-confirm/<uidb64>/<token>", auth_view.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html'), name="password_reset_confirm"),
     path("password-reset-complete/", auth_view.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name="password_reset_complete"),
 
+    # para el envío de mensajes
+    path('enviar_mensaje/', views.enviar_mensaje, name='enviar_mensaje'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
