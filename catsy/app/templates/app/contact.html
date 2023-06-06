@@ -113,35 +113,24 @@
 </div>
 
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp" target="_blank">
+    <i class="fab fa-whatsapp whatsapp-icon"></i></a>
     <style>
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            background-color: green;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 24px;
-            text-align: center;
-            cursor: pointer;
+        .whatsapp {
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:40px;
+            background-color:#25d366;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+            font-size:30px;
+            line-height: 59px;
+            z-index:100;
         }
     </style>
-        <a href="https://api.whatsapp.com/send?phone=56976206891" target="_blank" class="whatsapp-button">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <script>
-            window.onscroll = function () { scrollFunction() };
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.querySelector('.whatsapp-button').style.display = "block";
-                } else {
-                    document.querySelector('.whatsapp-button').style.display = "none";
-                }
-            }
-        </script>
 </div>
 
 <br><br>
