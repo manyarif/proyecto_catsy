@@ -9,7 +9,7 @@ CATEGORY_CHOICES = (
     ('CO', 'Comida para gatos'),
     ('AC', 'Accesorios para gatos'),
 )
-
+ 
 DISTRITO_CHOICES = (
 ('Lima', 'Lima'),
 ('Áncon', 'Áncon'),
