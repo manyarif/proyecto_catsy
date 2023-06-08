@@ -16,6 +16,11 @@
         <title>Catsy | {% block title %} {% endblock title %}</title>
     </head>
 <body>
+    <div class="alert alert-info text-center slide-in" role="alert">
+        <div class="sliding-text">
+            <strong>¡Promoción especial!</strong> Obtén un 20% de descuento en todos los juguetes para gatos. Usa el código <strong>CATTOYS20</strong> al realizar tu compra. <a href="{% url 'category' 'JU' %}" class="alert-link">Compra ahora</a>.
+        </div>
+    </div>  
     <nav class="navbar navbar-expand-lg bg-primary sticky-top" data-bs-theme="dark">
         <div class="container d-flex justify-content-between">
             <a class="navbar-brand" href="/">

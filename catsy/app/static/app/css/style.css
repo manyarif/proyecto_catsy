@@ -117,4 +117,28 @@ video{
 }
 body {
     overflow-x: hidden;
+    
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.sliding-text {
+    animation: slide-in 20s linear infinite;
+}
+
+.alert-info {
+    margin: 0 auto;
 }
