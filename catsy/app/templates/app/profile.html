@@ -5,14 +5,15 @@
         <div class="col-sm-2 border-end">
             <ul class="list-unstyled">
                 <li class="d-grid">
-                    <a href="{% url 'profile' %}" class="btn btn-primary">Perfil</a>
+                    <a href="{% url 'address' %}" class="btn btn">Mis Direcciones</a>
                 </li>
                 <li class="d-grid">
-                    <a href="{% url 'address' %}" class="btn btn">Direcciones</a>
+                    <a href="{% url 'profile' %}" class="btn btn-primary">Nueva Dirección</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-8 offset-sm-1">
+            <div><h1 class="text-primary-emphasis" style="text-align: center;">Registrar nueva dirección</h1></div>
             <form action="" method="post" class="shadow p-5">
                 {% csrf_token %} 
                 {% for fm in form %} 

@@ -5,57 +5,84 @@
         <div class="col-sm-2 border-end">
             <ul class="list-unstyled">
                 <li class="d-grid">
-                    <a href="{% url 'profile' %}" class="btn btn">Perfil</a>
+                    <a href="{% url 'address' %}" class="btn btn-primary">Mis Direcciones</a>
                 </li>
                 <li class="d-grid">
-                    <a href="{% url 'address' %}" class="btn btn-primary">Direcciones</a>
+                    <a href="{% url 'profile' %}" class="btn btn">Nueva Dirección</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-8 offset-sm-1">
+            <div><h1 class="text-primary-emphasis" style="text-align: center;">Mis direcciones registradas</h1></div>
             <div class="row">
                 {% for ad in add %}
                 <div class="col-sm-6">
-                    <div class="card m-3">
+                    <div class="card m-3 d-flex flex-row">
                         <div class="card-body">
-                            <h3>Dirección #{{forloop.counter}} </h3>
-                            <p>Name: {{ad.name}}</p>
-                            <p>Dirección: {{ad.locality}}</p>
-                            <p>Ciudad: {{ad.city}}</p>
-                            <p>Teléfono: {{ad.mobile}}</p>
-                            <p>Distrito: {{ad.state}}</p>
-                            <p>Código Postal: {{ad.zipcode}}</p>
-                            <p class="text-center"> <a href="{% url 'updateAddress' pk=ad.id %}" type="button" class="btn btn-warning"> Editar </a> </p>
+                            <h3 class="text-primary">Dirección #{{forloop.counter}}</h3>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Nombre:</span>
+                                <span class="text-secondary-emphasis">{{ad.name}}</span>
+                            </p>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Dirección:</span>
+                                <span class="text-secondary-emphasis">{{ad.locality}}</span>
+                            </p>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Ciudad:</span>
+                                <span class="text-secondary-emphasis">{{ad.city}}</span>
+                            </p>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Distrito:</span>
+                                <span class="text-secondary-emphasis">{{ad.state}}</span>
+                            </p>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Código
+                                    Postal:</span>
+                                <span class="text-secondary-emphasis">{{ad.zipcode}}</span>
+                            </p>
+                            <p class="my-1">
+                                <span class="text-primary-emphasis" style="font-size: 1rem; font-weight: bold;">Teléfono:</span>
+                                <span class="text-secondary-emphasis">{{ad.mobile}}</span>
+                            </p>
+                            <p class="text-end mb-0">
+                                <a href="{% url 'updateAddress' pk=ad.id %}" type="button"
+                                    class="btn btn-primary w-100" style="margin-top: 1rem;">Editar</a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-                {% if messages %} 
+                {% if messages %}
                 {% for msg in messages %}
                 <div class="alert alert-{{msg.tags}} my-3" role="alert">{{msg}}</div>
-                {% endfor %} 
+                {% endfor %}
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-<a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp" target="_blank">
+<a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp"
+    target="_blank">
     <i class="fab fa-whatsapp whatsapp-icon"></i></a>
-    <style>
-        .whatsapp {
-            position:fixed;
-            width:60px;
-            height:60px;
-            bottom:40px;
-            right:40px;
-            background-color:#25d366;
-            color:#FFF;
-            border-radius:50px;
-            text-align:center;
-            font-size:30px;
-            line-height: 59px;
-            z-index:100;
-        }
-    </style>
+<style>
+    .whatsapp {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        line-height: 59px;
+        z-index: 100;
+    }
+    .card {
+        background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+    }
+</style>
 {% endblock content %}

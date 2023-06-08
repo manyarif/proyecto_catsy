@@ -1,36 +1,36 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-
 {% block title %}Category{% endblock title %}
 
 {% block content %}
-
-
 <div class="container my-5">
     <div class="row">
         <div class="col-sm-3">
             <div class="list-group">
-                {% for val in title %} 
+                {% for val in title|dictsort:'title' %} 
                 <a href="{% url 'category-title' val.title %}" class="list-group-item list-group-item-action" aria-current="true">{{ val.title }}</a>
                 {% endfor %}
-        </div>
+            </div>
         </div>
 
         <div class="col-sm-9">
             <div class="row">
                 {% for prod in product %}
-                    <div class="col text-center mb-4">
+                    {% if forloop.counter0|divisibleby:4 %}
+                        </div><div class="row">
+                    {% endif %}
+                    <div class="col-sm-3 text-center mb-4">
                         <a href="{% url 'product-detail' prod.id %}" class="btn">
-                        <div>
-                            <img src="{{ prod.product_image.url }}" class="img-fluid product-image" />
-                            <div class="fw-bold">{{prod.title}}</div>
-                            <div class="fw-bold text-danger">S/. {{prod.discounted_price}}
-                            <small class="fw-light text-decoration-line-through"> {{prod.selling_price}} </small>
-                        </div>
+                            <div>
+                                <img src="{{ prod.product_image.url }}" class="img-fluid product-image" />
+                                <div class="fw-bold">{{prod.title}}</div>
+                                <div class="fw-bold text-danger">S/. {{prod.discounted_price}}
+                                    <small class="fw-light text-decoration-line-through"> {{prod.selling_price}} </small>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                </div>
                 {% endfor %}
             </div>
         </div>
@@ -38,44 +38,42 @@
 </div>
 <style>
     .product-image {
-        width: 15rem;
-        height: 15rem;
+        width: 10rem;
+        height: 10rem;
         object-fit: cover;
     }
-    html, body {
+
+    html,
+    body {
         height: 100%;
         margin: 0;
         padding: 0;
     }
+
     #content-wrapper {
         min-height: calc(100% - 70px);
         padding-bottom: 70px;
     }
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 70px;
-        background-color: #f8f9fa;
-    }
 </style>
+
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
 <a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp" target="_blank">
-    <i class="fab fa-whatsapp whatsapp-icon"></i></a>
-    <style>
-        .whatsapp {
-            position:fixed;
-            width:60px;
-            height:60px;
-            bottom:40px;
-            right:40px;
-            background-color:#25d366;
-            color:#FFF;
-            border-radius:50px;
-            text-align:center;
-            font-size:30px;
-            line-height: 59px;
-            z-index:100;
-        }
-    </style>
+    <i class="fab fa-whatsapp whatsapp-icon"></i>
+</a>
+<style>
+    .whatsapp {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        line-height: 59px;
+        z-index: 100;
+    }
+</style>
 {% endblock content %}
