@@ -32,7 +32,7 @@ urlpatterns = [
 
     # para el registro de usuarios
     path("registration", views.CustomerRegistrationView.as_view(), name="customerregistration"),
-    path("accounts/login/", auth_view.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm), name="login"),
+    path("accounts/login/", auth_view.LoginView.as_view(template_name='app/login.html', authentication_form=LoginForm, next_page='/'), name="login"),
     path('passwordchange/', auth_view.PasswordChangeView.as_view(template_name='app/changepassword.html', form_class=MyPasswordChangeForm, success_url='/passwordchangedone'), name='passwordchange'),
     path('passwordchangedone/', auth_view.PasswordChangeDoneView.as_view(template_name='app/passwordchangedone.html'), name='passwordchangedone'),
     path("logout/", auth_view.LogoutView.as_view(next_page='/'), name="logout"),
