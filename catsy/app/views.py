@@ -163,6 +163,10 @@ class checkout(View):
             famount += value
         totalamount=famount+10
         return render(request, 'app/checkout.html', locals())
+    
+    def post(self, request):
+        saludo = 'Hola'
+        return render(request, 'app/pay_success.html', locals())
 
 
 def plus_cart(request):
