@@ -12,7 +12,7 @@
                     <div class="col-sm-4 text-center mb-4 hover-shadow">
                         <a href="{% url 'product-detail' prod.id %}" class="btn">
                             <div>
-                                <img src="{{ prod.product_image.url }}" width="300" height="200" />
+                                <img src="{{ prod.product_image.url }}" class="img-fluid product-image"/>
                                 <div class="fw-bold">{{ prod.title }}</div>
                                 <div class="fw-bold text-danger">
                                     S/. {{ prod.discounted_price }}
@@ -26,4 +26,13 @@
         </div>
     </div>
 </div>
+
+<style>
+    .product-image {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+    }
+</style>
+
 {% endblock content %}
