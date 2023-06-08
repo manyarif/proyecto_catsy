@@ -1,38 +1,37 @@
 {% extends 'app/base.html' %}
 {% load static %}
-
-
 {% block title %}Product Detail{% endblock title %}
-
 {% block content %}
-
 <div class="container">
     <div class="row flex justify-content-between">
-        <div class="img2 col-lg-5 mt-5">
-            <img src="{{ product.product_image.url }}" class="img col-xs-6 col-sm-12 col-lg-12 mt-3 text-sm-center w-100 h-75" alt="">
+        <div class="col-lg-5 mt-4">
+            <div class="text-center mt-3">
+                <img src="{{ product.product_image.url }}" class="img-fluid mx-auto d-block" style="width: 100%; height: auto;" alt="">
+                {% if user.is_authenticated %}
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{ product.id }}">
+                    <button type="submit" class="btn btn-primary shadow px-5 py-2 mt-3 d-block btn-block">Agregar al Carrito</button>
+                </form>
+                <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 mt-3 d-block btn-block">Comprar Ahora</a>
+                {% else %}
+                <a href="{% url 'customerregistration' %}" class="btn btn-primary shadow px-5 py-2 mt-3 d-block btn-block">Agregar al Carrito</a>
+                <a href="{% url 'customerregistration' %}" class="btn btn-warning shadow px-5 py-2 mt-3 d-block btn-block">Comprar Ahora</a>
+                {% endif %}
+            </div>
         </div>
-        <div class="productdetail col-lg-5">
-            <h1 style="font-family: Georgia; font-size 50px;">{{ product.title }}</h1>
-            <h5>S/. {{ product.discounted_price}}</h5>
-            <small class="text-decoration-line-through text-muted fs-5"><del>S/. {{ product.selling_price}} </del></small>
-            <br><br><h4>Características del Producto</h4>
-            <ul class="fs-5" style="font-family: Rajdhani;">
-                <li> <b>Descripción:</b> {{ product.description }}</li>
-                <li><b>Composición:</b> {{ product.composition }}</li>
-                <li><b>Uso:</b> {{ product.prodapp }}</li>
-            </ul>
+        <div class="productdetail col-lg-7 mt-4">
+            <h1 style="font-family: Georgia; font-size: 40px;">{{ product.title }}</h1>
+            <h3 class="text-success">Precio Final S/. {{ product.discounted_price }}</h3>
+            <h3 class="text-danger fs-5">Antes S/. <del class="text-decoration-line-through text-danger fs-5">{{ product.selling_price }}</del></h3>
             <br>
-            {% if user.is_authenticated %}
-            <form action="/add-to-cart" class="d-inline">
-                <input type="hidden" name="prod_id" value={{ product.id }}>
-                <button type="submit" class="btn btn-primary shadow px-5 py-2">Agregar al Carrito</button>
-            </form>
-            <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
-            {% else %}
-            <a href="{% url 'customerregistration' %}" class="btn btn-primary shadow px-5 py-2">Agregar al Carrito</a>
-            <a href="{% url 'customerregistration' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Comprar Ahora</a>
-            {% endif %}
+            <h4>Características del Producto:</h4>
+            <ul class="fs-5" style="font-family: Rajdhani; text-align: justify; list-style: none;">
+                <li><br><b>Descripción:</b> {{ product.description }}</li>
+                <li><br><b>Composición:</b> {{ product.composition }}</li>
+                <li><br><b>Uso:</b> {{ product.prodapp }}</li>
+            </ul>
         </div>
+    </div>
     </div>
 </div>
 <br><br>
@@ -54,6 +53,9 @@
             line-height: 59px;
             z-index:100;
         }
+        .btn-block {
+        width: 100%;
+    }
     </style>
 {% endblock content %}
 
