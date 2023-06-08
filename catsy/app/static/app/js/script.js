@@ -48,3 +48,4 @@ $('.remove-cart').click(function(){
         }
     })
 })
+
