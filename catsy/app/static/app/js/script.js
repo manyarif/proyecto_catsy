@@ -1,10 +1,6 @@
-
-
 $('.plus-cart').click(function(){
     var id=$(this).attr("pid").toString();
     var eml = this.parentNode.children[2];
-    // console.log(this.parentNode.children[2]);
-    console.log("pid :", id);
     $.ajax({
         type:"GET",
         url:"/pluscart",
@@ -12,14 +8,12 @@ $('.plus-cart').click(function(){
             prod_id:id
         },
         success:function(data){
-            console.log("data = ", data)
             eml.innerText=data.quantity
-            document.getElementById("amount").innerText=data.amount;
-            document.getElementById("totalamount").innerText=data.totalamount
+            document.getElementById("amount").innerText=parseFloat(data.amount).toFixed(2);
+            document.getElementById("totalamount").innerText=parseFloat(data.totalamount).toFixed(2);
         }
     })
 })
-
 
 $('.minus-cart').click(function(){
     var id=$(this).attr("pid").toString();
@@ -32,8 +26,8 @@ $('.minus-cart').click(function(){
         },
         success:function(data){
             eml.innerText=data.quantity
-            document.getElementById("amount").innerText=data.amount;
-            document.getElementById("totalamount").innerText=data.totalamount
+            document.getElementById("amount").innerText=parseFloat(data.amount).toFixed(2);
+            document.getElementById("totalamount").innerText=parseFloat(data.totalamount).toFixed(2);
         }
     })
 })
@@ -48,8 +42,8 @@ $('.remove-cart').click(function(){
             prod_id:id
         },
         success:function(data){
-            document.getElementById("amount").innerText=data.amount;
-            document.getElementById("totalamount").innerText=data.totalamount
+            document.getElementById("amount").innerText=parseFloat(data.amount).toFixed(2);
+            document.getElementById("totalamount").innerText=parseFloat(data.totalamount).toFixed(2);
             eml.parentNode.parentNode.parentNode.parentNode.remove()
         }
     })
