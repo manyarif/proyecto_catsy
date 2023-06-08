@@ -1,63 +1,40 @@
 {% extends 'app/base.html' %}
 {% load static %}
-
 {% block title %}Category{% endblock title %}
-
 {% block content %}
+<h1 class="text-primary" style="text-align:center; margin-top: 2rem; margin-bottom: 2rem;">Catálogo de Productos</h1>
+<h5 style="text-align:center;">
+    <a href="{% url 'category' 'AR' %}" style="text-decoration: none;">Arenas</a>
+    <span style="margin: 0 1rem;">|</span>
+    <a href="{% url 'category' 'CO' %}" style="text-decoration: none;">Comidas</a>
+    <span style="margin: 0 1rem;">|</span>
+    <a href="{% url 'category' 'JU' %}" style="text-decoration: none;">Juguetes</a>
+    <span style="margin: 0 1rem;">|</span>
+    <a href="{% url 'category' 'AC' %}" style="text-decoration: none;">Accesorios</a>
+</h5>
+<div class="search-bar">
+    <input type="text" id="search-input" placeholder="Buscar por Producto">
+</div>
 <div class="container my-5">
     <div class="row">
-        <div class="col-sm-3">
-            <div class="list-group">
-                {% for val in title|dictsort:'title' %} 
-                <a href="{% url 'category-title' val.title %}" class="list-group-item list-group-item-action" aria-current="true">{{ val.title }}</a>
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="col-sm-9">
-            <div class="row">
-                {% for prod in product %}
-                    {% if forloop.counter0|divisibleby:4 %}
-                        </div><div class="row">
-                    {% endif %}
-                    <div class="col-sm-3 text-center mb-4">
-                        <a href="{% url 'product-detail' prod.id %}" class="btn">
-                            <div>
-                                <img src="{{ prod.product_image.url }}" class="img-fluid product-image" />
-                                <div class="fw-bold">{{prod.title}}</div>
-                                <div class="fw-bold text-danger">S/. {{prod.discounted_price}}
-                                    <small class="fw-light text-decoration-line-through"> {{prod.selling_price}} </small>
-                                </div>
-                            </div>
-                        </a>
+        {% for prod in product %}
+        <div class="col-sm-3 text-center mb-4 product-item">
+            <a href="{% url 'product-detail' prod.id %}" class="btn">
+                <div>
+                    <img src="{{ prod.product_image.url }}" class="img-fluid product-image" />
+                    <div class="fw-bold">{{prod.title}}</div>
+                    <div class="fw-bold text-danger">S/. {{prod.discounted_price}}
+                        <small class="fw-light text-decoration-line-through"> {{prod.selling_price}} </small>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            </a>
         </div>
+        {% endfor %}
     </div>
 </div>
-<style>
-    .product-image {
-        width: 10rem;
-        height: 10rem;
-        object-fit: cover;
-    }
-
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    #content-wrapper {
-        min-height: calc(100% - 70px);
-        padding-bottom: 70px;
-    }
-</style>
-
 <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-<a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp" target="_blank">
+<a href="https://wa.me/56976206891?text=Me%20gustaría%20saber%20el%20precio%20del%20producto" class="whatsapp"
+    target="_blank">
     <i class="fab fa-whatsapp whatsapp-icon"></i>
 </a>
 <style>
@@ -75,5 +52,60 @@
         line-height: 59px;
         z-index: 100;
     }
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .search-bar label {
+        margin-bottom: 0.5rem;
+    }
+    #search-input {
+        border: 1px solid #007bff; /* Color primary de Bootstrap */
+        outline: none; /* Eliminar el borde predeterminado al hacer clic */
+        height: 3rem;
+        width: 100%;
+        max-width: 30rem; /* Ancho máximo para mantener el diseño responsivo */
+        padding: 0.5rem;
+        transition: border-color 0.2s;
+        border-radius: 2rem; /* Bordes circulares */
+    }
+    #search-input:focus {
+        border-color: #007bff; /* Acentuar el color primary al hacer clic */
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Resaltado al hacer clic */
+    }
+    .product-image {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+    }
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #content-wrapper {
+        min-height: calc(100% - 70px);
+        padding-bottom: 70px;
+    }
 </style>
+<script>
+    const searchInput = document.getElementById('search-input');
+    const productItems = document.getElementsByClassName('product-item');
+    searchInput.addEventListener('input', function (event) {
+        const searchTerm = event.target.value.toLowerCase();
+        for (let i = 0; i < productItems.length; i++) {
+            const productItem = productItems[i];
+            const productTitle = productItem.querySelector('.fw-bold').textContent.toLowerCase();
+            if (productTitle.includes(searchTerm)) {
+                productItem.style.display = 'block';
+            } else {
+                productItem.style.display = 'none';
+            }
+        }
+    });
+</script>
 {% endblock content %}
