@@ -71,8 +71,7 @@ Wanna see more? Here's my portfolio: [Flavio's Portfolio](link-to-your-portfolio
 
 ---
 
-👉 Made with ❤️ and 🚀.
-
+👉 Made with ❤️.
 
 ...
 
