@@ -61,8 +61,14 @@
                             <li><a class="dropdown-item" href="{% url 'address' %}">Mis Direcciones</a></li>
                             <li><a class="dropdown-item" href="{% url 'showcart' %}">Mis Pedidos</a></li>
                             <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Cambiar Contraseña</a></li>
-                            <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
-                        </ul>
+                            <li>
+                                <a action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+                                </a>
+                                <!-- <a class="dropdown-item" href="{% url 'logout' %}"></a> -->
+                            </li>
+                        </ul>   	
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link" href="{% url 'showcart' %}"> {% if totalitem > 0 %}<span class="badge bg-danger"> {{ totalitem }} </span>{%endif%}  <span>  </span><i class="fas fa-shopping-cart"></i></a>  
